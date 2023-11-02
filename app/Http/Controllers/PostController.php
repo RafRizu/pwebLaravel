@@ -16,4 +16,9 @@ class PostController extends Controller
         return view('layouts.post.index',compact('posts'));
 
     }
+    public function detail(Post $post){
+        return view('layouts.post.post',[
+             'posts' => $post,
+         ]);
+    }
 }

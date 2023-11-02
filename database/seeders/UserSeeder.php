@@ -38,6 +38,6 @@ class UserSeeder extends Seeder
             'name'=> 'RafRizu',
             'email'=>'thisrafi10@gmail.com', 'password'=>bcrypt('hehehehe')
         ]);
-        $admin->assignRole('superadmin');
+        $test->assignRole('superadmin');
     }
 }

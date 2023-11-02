@@ -44,4 +44,5 @@ Route::group(['middleware' => ['auth', 'checkrole:user']], function () {
     // Definisi route untuk user di sini
 });
 Route::get('/post', [PostController::class,'index'])->name('index');
+Route::get('/post/{post:slug}',[PostController::class,"detail"])->name('detail');
 require __DIR__.'/auth.php';
