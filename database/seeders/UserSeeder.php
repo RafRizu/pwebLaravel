@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             'name'=> 'user',
             'email'=>'user@test.com', 'password'=>bcrypt('hehehehe')
         ]);
-        $admin->assignRole('user');
+        $user->assignRole('user');
 
 
         // gweh
