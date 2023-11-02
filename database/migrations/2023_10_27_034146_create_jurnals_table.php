@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('nomor_akun',5);
             $table->integer('debet');
             $table->integer('kredit');
+            $table->foreign('nomor_akun')->references('nomor_akun')->on('akuns');
             $table->timestamps();
         });
     }

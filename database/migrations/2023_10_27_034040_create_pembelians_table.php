@@ -18,7 +18,8 @@ return new class extends Migration
             $table->date('tgl_beli');
             $table->string('no_faktur',14);
             $table->integer('total_beli');
-            $table->string('no_pesan',14);
+            $table->string('nomor_pesan',14);
+            $table->foreign('nomor_pesan')->references('nomor_pesan')->on('pemesanans');
             $table->timestamps();
         });
     }

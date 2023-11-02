@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('id_setting',5)->autoIncrement()->primary();
             $table->string('nomor_akun',5);
             $table->string('nama_transaksi',20);
+            $table->foreign('nomor_akun')->references('nomor_akun')->on('akuns');
             $table->timestamps();
         });
     }

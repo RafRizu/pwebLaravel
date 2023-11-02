@@ -16,11 +16,11 @@ class UserSeeder extends Seeder
     public function run()
     {
         //
-        $admin=User::create([
+        $superadmin=User::create([
             'name'=> 'superadmin',
             'email'=>'superadmin@test.com', 'password'=>bcrypt('hehehehe')
         ]);
-        $admin->assignRole('superadmin');
+        $superadmin->assignRole('superadmin');
         $admin=User::create([
             'name'=> 'admin',
             'email'=>'admin@test.com', 'password'=>bcrypt('hehehehe')
@@ -32,5 +32,12 @@ class UserSeeder extends Seeder
         ]);
         $admin->assignRole('user');
 
+
+        // gweh
+        $test=User::create([
+            'name'=> 'RafRizu',
+            'email'=>'thisrafi10@gmail.com', 'password'=>bcrypt('hehehehe')
+        ]);
+        $admin->assignRole('superadmin');
     }
 }

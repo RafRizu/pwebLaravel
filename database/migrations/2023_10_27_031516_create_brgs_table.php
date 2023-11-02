@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('brgs', function (Blueprint $table) {
-            $table->string('kd_brg',5)->autoIncrement()->primary_key();
+            $table->string('kd_brg',5)->autoIncrement()->primary();
             $table->string('nm_brg',25);
             $table->integer('harga');
             $table->integer('stok');

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('tgl_pesan');
             $table->integer('total');
             $table->string('kode_supp');
+            $table->foreign('kode_supp')->references('kode_supp')->on('supps');
             $table->timestamps();
         });
     }
