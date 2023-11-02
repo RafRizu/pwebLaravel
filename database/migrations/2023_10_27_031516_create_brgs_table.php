@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('brgs', function (Blueprint $table) {
-            $table->string('kd_brg',5)->primary()->autoIncrement();
-            $table->string('nm_brg',25);
-            $table->integer('harga');
-            $table->integer('stok');
-
-            $table->timestamps();
-        });
+    Schema::create('brgs', function (Blueprint $table) {
+        $table->id('kd_brg');
+        $table->string('nm_brg', 25);
+        $table->integer('harga');
+        $table->integer('stok');
+        $table->timestamps();
+    });
     }
 
     /**

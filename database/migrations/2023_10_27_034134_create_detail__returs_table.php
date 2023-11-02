@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('detail__returs', function (Blueprint $table) {
             $table->string('nomor_retur',14);
-            $table->string('kode_brg',5);
+            // $table->string('kode_brg',5);
             $table->integer('qty_retur');
             $table->integer('sub_retur');
-            $table->foreign('kode_brg')->references('kd_brg')->on('brgs');
+            $table->foreignId('kode_brg')->references('kd_brg')->on('brgs');
             $table->foreign('nomor_retur')->references('nomor_retur')->on('retur__belis');
             $table->timestamps();
         });

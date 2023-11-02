@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('detail_pesans', function (Blueprint $table) {
             $table->string('nomor_pesan',14);
-            $table->string('kode_brg',5);
+            // $table->string('kode_brg',5);
             $table->integer('qty_pesan');
             $table->integer('subtotal');
-            $table->foreign('kode_brg')->references('kd_brg')->on('brgs');
+            $table->foreignId('kode_brg')->references('kd_brg')->on('brgs');
             $table->foreign('nomor_pesan')->references('nomor_pesan')->on('pemesanans');
             $table->timestamps();
         });

@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('t__pemesanans', function (Blueprint $table) {
-            $table->string('kode_brg',5);
+            // $table->string('kode_brg',5);
             $table->string('qty_pesan');
-            $table->foreign('kode_brg')->references('kd_brg')->on('brgs');
+            $table->foreignId('kode_brg')->references('kd_brg')->on('brgs');
             $table->timestamps();
         });
     }

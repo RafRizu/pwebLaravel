@@ -52,7 +52,7 @@ class BrgSeeder extends Seeder
         ];
         foreach ($data as $value){
             Brg::insert([
-                'kd_brg' => $value['kd_brg'],
+
                 'nm_brg' => $value['nm_brg'],
                 'harga' => $value['harga'],
                 'stok' => $value['stok'],
