@@ -56,8 +56,8 @@ class BrgSeeder extends Seeder
                 'nm_brg' => $value['nm_brg'],
                 'harga' => $value['harga'],
                 'stok' => $value['stok'],
-                'created_at' => Carbon::now()->format('Y-m-d'),
-                'updated_at' => Carbon::now()->format('Y-m-d'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
         }
     }

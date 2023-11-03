@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Brg extends Model
 {
     use HasFactory;
+        protected $primaryKey = 'kd_brg';
+        public $timestamps = true;
+        protected $fillable = [
+        'nm_brg',
+        'harga',
+        'stok',
+        'created_at',
+        'updated_at',
+    ];
 }

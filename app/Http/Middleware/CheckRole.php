@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Providers\RouteServiceProvider;
 
 class CheckRole
 {
@@ -14,11 +15,12 @@ class CheckRole
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
-    {
-            if (! $request->user() || ! $request->user()->hasAnyRole($roles)) {
-        abort(403);
+public function handle($request, Closure $next, ...$roles)
+{
+    if (! $request->user() || ! $request->user()->hasAnyRole($roles)) {
+        return redirect(RouteServiceProvider::HOME)->withError('Akses tidak diberikan!');
     }
-        return $next($request);
-    }
+
+    return $next($request);
+}
 }
