@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Brg;
 use App\Models\Post;
+use App\Models\Pembelian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +28,7 @@ class PostController extends Controller
     $request->validate([
         'nm_brg' => 'required|string|max:255',
         'harga' => 'required|numeric',
-        'stok' => 'required|integer',
+        // 'stok' => 'required|integer',
     ], [
         'required' => 'Kolom :attribute harus diisi.',
         'string' => 'Kolom :attribute harus berupa teks.',
@@ -46,7 +47,8 @@ class PostController extends Controller
     $barang = Brg::create([
         'nm_brg' => $request->input('nm_brg'),
         'harga' => $request->input('harga'),
-        'stok' => $request->input('stok'),
+        // 'stok' => $request->input('stok'),
+        'stok' => 0,
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now(),
     ]);
@@ -63,7 +65,7 @@ public function update(Request $request, Brg $brg)
     $request->validate([
         'nm_brg' => 'required|string|max:255',
         'harga' => 'required|numeric',
-        'stok' => 'required|integer',
+        // 'stok' => 'required|integer',
     ], [
         'required' => 'Kolom :attribute harus diisi.',
         'string' => 'Kolom :attribute harus berupa teks.',
@@ -79,7 +81,8 @@ public function update(Request $request, Brg $brg)
         ->update([
             'nm_brg' => $request->input('nm_brg'),
             'harga' => $request->input('harga'),
-            'stok' => $request->input('stok'),
+            // 'stok' => $request->input('stok'),
+            // 'stok' => 0,
             'updated_at' => Carbon::now(),
         ]);
 
@@ -91,25 +94,32 @@ public function update(Request $request, Brg $brg)
     }
 }
 
-public function destroy(Brg $brg)
+public function destroy($kd_brg)
 {
     // Cari data barang berdasarkan ID
-    $barang = Brg::find($brg->kd_brg);
+        $barang = Brg::where('kd_brg', $kd_brg);
 
-    // Periksa apakah data barang ditemukan
-    if (!$barang) {
-        return redirect()->route('index')->with('error', 'Data barang tidak ditemukan');
+        if (!$barang) {
+            return redirect()->back()->withErrors(['message' => 'Barang tidak ditemukan']);
+        }
+
+        $barang->delete();
+
+            if ($barang) {
+        // Redirect ke halaman yang sesuai atau tampilkan pesan sukses
+        return redirect()->route('index')->with('success', 'Data barang berhasil dihapus');
+    } else {
+        return redirect()->back()->with('error', 'Gagal menghapus data barang');
     }
-
-    // Hapus data barang
-    $barang->delete();
-
-    // Redirect ke halaman yang sesuai atau tampilkan pesan sukses
-    return redirect()->route('index')->with('success', 'Data barang berhasil dihapus');
 }
     public function detail(Post $post){
         return view('layouts.post.post',[
              'posts' => $post,
          ]);
     }
+
+
+    //Contoller Stok
+
+
 }

@@ -23,27 +23,30 @@
             @endrole
             @role('admin|superadmin')
                 <div class="col-4">
-                    <a href="" class="btn btn-success  ps-2">Kelola Pengguna</a>
+                    <a href="{{route('createStok')}}" class="btn btn-success  ps-2">Kelola Stok</a>
                 </div>
             @endrole
             @role('superadmin')
                 <div class="col-4">
-                    <a href="" class="btn btn-success  ps-2">Laporan</a>
+                    <a href="{{route('laporan')}}" class="btn btn-success  ps-2">Laporan</a>
                 </div>
             @endrole
         </div>
     </div>
-    @if (session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
+    <div class="mx-5 d-block">
 
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+    </div>
     <table class="table table-bordered container">
         <tr>
             <th>No</th>
@@ -69,7 +72,7 @@
 
                         <a href="{{ route('edit', $data->kd_brg) }}" class="btn btn-warning btn-sm mx-2 d-inline">Edit</a>
 
-                        <form action="{{ route('destroy', $data->kd_brg) }}" method="post" class="d-inline">
+                        <form action="{{ url('/barang/delete/'.$data->kd_brg) }}" method="post" class="d-inline">
                             @csrf
                             @method('delete')
                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"

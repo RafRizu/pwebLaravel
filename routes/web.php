@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PembelianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,5 +53,16 @@ Route::get('/barang/create', [PostController::class,'create'])->name('create')->
 Route::post('/barang/store', [PostController::class,'store'])->name('store')->middleware(['auth', 'checkrole:user,admin,superadmin']);
 Route::get('/barang/edit/{brg:kd_brg}', [PostController::class,'edit'])->name('edit')->middleware(['auth', 'checkrole:admin,superadmin']);
 Route::put('/barang/update/{brg:kd_brg}', [PostController::class,'update'])->name('update')->middleware(['auth', 'checkrole:admin,superadmin']);
-Route::delete('/barang/delete/{brg:kd_brg}', [PostController::class,'destroy'])->name('destroy')->middleware(['auth', 'checkrole:admin,superadmin']);
+Route::delete('/barang/delete/{kd_brg}', [PostController::class,'destroy'])->name('destroy')->middleware(['auth', 'checkrole:admin,superadmin']);
+
+// Update Stok
+
+Route::get('/stok/create', [PembelianController::class,'addStok'])->name('createStok')->middleware(['auth', 'checkrole:admin,superadmin']);
+Route::post('/stok/store', [PembelianController::class,'storeStok'])->name('storeStok')->middleware(['auth', 'checkrole:admin,superadmin']);
+
+// Laporan
+
+Route::get('/laporan', [LaporanController::class,'index'])->name('laporan')->middleware(['auth', 'checkrole:superadmin']);
+
+
 require __DIR__.'/auth.php';
