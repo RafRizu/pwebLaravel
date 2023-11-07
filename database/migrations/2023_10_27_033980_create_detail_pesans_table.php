@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('detail_pesans', function (Blueprint $table) {
-            $table->string('nomor_pesan',14);
+            // $table->string('nomor_pesan',14);
             // $table->string('kode_brg',5);
             $table->integer('qty_pesan');
             $table->integer('subtotal');
-            $table->foreignId('kode_brg')->references('kd_brg')->on('brgs');
-            $table->foreign('nomor_pesan')->references('nomor_pesan')->on('pemesanans');
+            $table->foreignId('kode_brg')->references('kd_brg')->on('brgs')->onDelete('cascade');
+            $table->foreignId('nomor_pesan')->references('nomor_pesan')->on('pemesanans');
             $table->timestamps();
         });
     }

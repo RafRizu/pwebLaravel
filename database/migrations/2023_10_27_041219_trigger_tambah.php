@@ -17,9 +17,9 @@ DB::unprepared('
 CREATE TRIGGER update_stok after INSERT ON detail__pembelians
 FOR EACH ROW BEGIN
 UPDATE brgs
-SET stok = stok + detail__pembelians.new.qty_beli
+SET stok = stok + new.qty_beli
 WHERE
-kd_brg = detail__pembelians.new.kd_brg;
+kd_brg = new.kode_brg;
 END
 ');
 }

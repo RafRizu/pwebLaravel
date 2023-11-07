@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('t__pemesanans', function (Blueprint $table) {
-            // $table->string('kode_brg',5);
-            $table->string('qty_pesan');
-            $table->foreignId('kode_brg')->references('kd_brg')->on('brgs')->onDelete('cascade');
+        Schema::create('fakturs', function (Blueprint $table) {
+            $table->id('no_faktur');
+            // $table->string('no_faktur');
+            $table->date('tanggal_faktur');
+            $table->decimal('jumlah_faktur', 10, 2);
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t__pemesanans');
+        Schema::dropIfExists('fakturs');
     }
 };

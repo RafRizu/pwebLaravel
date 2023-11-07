@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('detail__pembelians', function (Blueprint $table) {
-            $table->string('nomor_beli',14);
+            // $table->string('nomor_beli',14);
             // $table->string('kode_brg',14);
             $table->integer('qty_beli');
-            $table->integer('sub_beli');
-            $table->foreignId('kode_brg')->references('kd_brg')->on('brgs');
-            $table->foreign('nomor_beli')->references('nomor_beli')->on('pembelians');
+            // $table->integer('sub_beli');
+            $table->foreignId('kode_brg')->references('kd_brg')->on('brgs')->onDelete('cascade');
+            $table->foreignId('nomor_beli')->references('nomor_beli')->on('pembelians');
             $table->timestamps();
         });
     }

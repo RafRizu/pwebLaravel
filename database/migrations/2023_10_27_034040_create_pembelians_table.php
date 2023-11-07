@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pembelians', function (Blueprint $table) {
-            $table->string('nomor_beli',14)->autoIncrement()->primary();
+            $table->id('nomor_beli',14);
             $table->date('tgl_beli');
             $table->string('no_faktur',14);
             $table->integer('total_beli');
-            $table->string('nomor_pesan',14);
-            $table->foreign('nomor_pesan')->references('nomor_pesan')->on('pemesanans');
+            // $table->string('nomor_pesan',14);
+            // $table->foreignId('nomor_pesan')->references('nomor_pesan')->on('pemesanans');
+            $table->foreignId('kode_brg')->references('kd_brg')->on('brgs')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

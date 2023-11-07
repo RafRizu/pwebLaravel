@@ -30,11 +30,6 @@
                                 <input type="number" class="form-control" id="harga" name="harga"
                                     value="{{ $brg->harga }}" required>
                             </div>
-                            <div class="form-group">
-                                <label for="stok">Stok:</label>
-                                <input type="number" class="form-control" id="stok" name="stok"
-                                    value="{{ $brg->stok }}" required>
-                            </div>
                             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                         </form>
                     </div>

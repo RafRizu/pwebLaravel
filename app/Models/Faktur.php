@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class detail_Pembelian extends Model
+class Faktur extends Model
 {
     use HasFactory;
-        protected $table = 'detail__pembelians';
-        // protected $primaryKey = 'nomor_beli';
+        protected $table = 'fakturs';
+        protected $primaryKey = 'no_faktur';
         public $timestamps = true;
         protected $fillable = [
-        'qty_beli',
+        'tgl_beli',
+        'no_faktur',
+        'total_beli',
         'kode_brg',
-        'nomor_beli',
         'created_at',
         'updated_at',
     ];

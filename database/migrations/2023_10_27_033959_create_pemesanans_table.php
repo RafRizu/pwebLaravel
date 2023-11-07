@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pemesanans', function (Blueprint $table) {
-            $table->string('nomor_pesan',14)->autoIncrement()->primary();
+            $table->id('nomor_pesan',14);
             $table->date('tgl_pesan');
             $table->integer('total');
             $table->string('kode_supp');

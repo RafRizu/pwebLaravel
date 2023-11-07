@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('t__pemesanans', function (Blueprint $table) {
-            // $table->string('kode_brg',5);
-            $table->string('qty_pesan');
-            $table->foreignId('kode_brg')->references('kd_brg')->on('brgs')->onDelete('cascade');
-            $table->timestamps();
-        });
+        //
+        DB::unprepared('
+CREATE TRIGGER update_detail after INSERT ON pembelians
+FOR EACH ROW BEGIN
+INSERT INTO detail__pembelians(qty_beli, kode_brg, nomor_beli)
+Values(new.total_beli,new.kode_brg, new.nomor_beli);
+END
+');
     }
 
     /**
@@ -28,6 +30,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t__pemesanans');
+        //
+                DB::unprepared('DROP TRIGGER update_detail');
     }
 };
