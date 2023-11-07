@@ -72,13 +72,11 @@
 
                         <a href="{{ route('edit', $data->kd_brg) }}" class="btn btn-warning btn-sm mx-2 d-inline">Edit</a>
 
-                        <form action="{{ url('/barang/delete/'.$data->kd_brg) }}" method="post" class="d-inline">
-                            @csrf
-                            @method('delete')
-                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#deleteConfirmation">Hapus</button>
+
+                            <a type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#deleteConfirmation{{$data->kd_brg}}">Hapus</a>
                                 @include('layouts.partials.modal')
-                        </form>
+                        
                     </td>
                 @endrole
 

@@ -96,21 +96,15 @@ public function update(Request $request, Brg $brg)
 
 public function destroy($kd_brg)
 {
-    // Cari data barang berdasarkan ID
-        $barang = Brg::where('kd_brg', $kd_brg);
+    $barangsss = Brg::find($kd_brg);
 
-        if (!$barang) {
-            return redirect()->back()->withErrors(['message' => 'Barang tidak ditemukan']);
-        }
-
-        $barang->delete();
-
-            if ($barang) {
-        // Redirect ke halaman yang sesuai atau tampilkan pesan sukses
-        return redirect()->route('index')->with('success', 'Data barang berhasil dihapus');
-    } else {
-        return redirect()->back()->with('error', 'Gagal menghapus data barang');
+    if (!$barangsss) {
+        return redirect()->back()->with('error', 'Barang tidak ditemukan.');
     }
+
+    $barangsss->delete();
+
+    return redirect()->route('index')->with('success', 'Barang berhasil dihapus.');
 }
     public function detail(Post $post){
         return view('layouts.post.post',[
