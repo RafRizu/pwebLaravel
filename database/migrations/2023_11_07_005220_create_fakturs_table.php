@@ -14,11 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('fakturs', function (Blueprint $table) {
+            // $table->id();
             $table->id('no_faktur');
-            // $table->string('no_faktur');
-            $table->date('tanggal_faktur');
-            $table->decimal('jumlah_faktur', 10, 2);
-            $table->text('keterangan')->nullable();
+            // $table->foreignId('kode_brg')->references('kd_brg')->on('brgs')->onDelete('cascade')->onUpdate('cascade');
+            $table->dateTime('tanggal_faktur');
+            // $table->decimal('jumlah_faktur', 10, 2);
+            $table->integer('total');
+            // $table->integer('bayar');
+            // $table->integer('kembalian');
+            $table->enum('keterangan', ['Lunas', 'Belum Lunas'])->default('Lunas');;
             $table->timestamps();
         });
     }

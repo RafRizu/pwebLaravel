@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\SuperadminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,9 +61,15 @@ Route::delete('/barang/delete/{kd_brg}', [PostController::class,'destroy'])->nam
 Route::get('/stok/create', [PembelianController::class,'addStok'])->name('createStok')->middleware(['auth', 'checkrole:admin,superadmin']);
 Route::post('/stok/store', [PembelianController::class,'storeStok'])->name('storeStok')->middleware(['auth', 'checkrole:admin,superadmin']);
 
+
 // Laporan
 
 Route::get('/laporan', [LaporanController::class,'index'])->name('laporan')->middleware(['auth', 'checkrole:superadmin']);
 
+//Faktur
+
+Route::get('/faktur/index', [SuperadminController::class,'index'])->name('indexFaktur')->middleware(['auth', 'checkrole:superadmin']);
+Route::get('/faktur/create', [SuperadminController::class,'createFaktur'])->name('createFaktur')->middleware(['auth', 'checkrole:superadmin']);
+Route::post('/faktur/store', [SuperadminController::class,'storeFaktur'])->name('storeFaktur')->middleware(['auth', 'checkrole:superadmin']);
 
 require __DIR__.'/auth.php';

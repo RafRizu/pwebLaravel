@@ -17,7 +17,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="{{ route('storeFaktur') }}" method="post">
+                        <form action="{{ route('storeDetailFaktur') }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="total">Total</label>
